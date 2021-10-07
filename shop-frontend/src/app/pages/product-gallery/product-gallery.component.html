@@ -28,14 +28,14 @@
   <div class="col-md-9 col-xs-12">
     <div class="row row-cols-1 row-cols-md-3 g-4">
 
-      <div *ngFor="let prod of product" class="col">
+      <div *ngFor="let prod of products" class="col">
         <div class="card">
           <img class="card-img-top" src="http://localhost:8080/api/v1/picture/{{prod.pictures[0]}}" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">{{prod.name}}</h5>
             <p class="card-text">{{prod.description}}</p>
             <a routerLink="/product/{{prod.id}}" class="btn btn-primary">View</a>
-            <a href="#" class="btn btn-primary">Add to card</a>
+            <a (click)="addToCart(prod.id)" class="btn btn-primary">Add to card</a>
           </div>
         </div>
       </div>
