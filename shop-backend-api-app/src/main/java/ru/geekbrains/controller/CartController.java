@@ -1,15 +1,15 @@
-package ru.gb.controller;
+package ru.geekbrains.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.gb.controller.dto.AddLineItemDto;
-import ru.gb.controller.dto.AllCartDto;
-import ru.gb.controller.dto.ProductDto;
-import ru.gb.service.CartService;
-import ru.gb.service.ProductService;
-import ru.gb.service.dto.LineItem;
+import ru.geekbrains.controller.dto.AddLineItemDto;
+import ru.geekbrains.controller.dto.AllCartDto;
+import ru.geekbrains.controller.dto.ProductDto;
+import ru.geekbrains.service.CartService;
+import ru.geekbrains.service.ProductService;
+import ru.geekbrains.service.dto.LineItem;
 
 import java.util.List;
 
