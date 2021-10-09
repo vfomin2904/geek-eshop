@@ -26,12 +26,16 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void removeProductQty(ProductDto productDto, String color, String material, int qty) {
-        // TODO
+        LineItem lineItem = new LineItem(productDto, color, material);
+        if(lineItems.getOrDefault(lineItem, 0) - qty <= 0){
+            removeProduct(productDto, color, material);
+        }
+        lineItems.put(lineItem, lineItems.getOrDefault(lineItem, 0) - qty);
     }
 
     @Override
     public void removeProduct(ProductDto productDto, String color, String material) {
-        // TODO
+        lineItems.remove(new LineItem(productDto, color, material));
     }
 
     @Override
@@ -46,5 +50,10 @@ public class CartServiceImpl implements CartService {
         return lineItems.keySet()
                 .stream().map(LineItem::getItemTotal)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    @Override
+    public void clear(){
+        lineItems.clear();
     }
 }

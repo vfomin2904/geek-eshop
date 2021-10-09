@@ -17,18 +17,18 @@
         <th scope="row">1</th>
         <td>{{lineItem.productDto.name}}</td>
         <td>
-          <input type="number" value="{{lineItem.qty}}" class="form-control w-25"/>
+          <input #countItem type="number" value="{{lineItem.qty}}" class="form-control w-25"/>
         </td>
         <td>{{lineItem.itemTotal}}</td>
         <td>
-          <a class="btn btn-success me-2" href="#"><i class="fas fa-check-circle"></i></a>
-          <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
+          <input  type="button" (click)="save(lineItem, countItem.valueAsNumber)" class="btn btn-success me-2"/>
+          <input type="button" (click)="delete(lineItem)" class="btn btn-danger"/>
         </td>
       </tr>
 
       </tbody>
     </table>
-    <button class="btn btn-danger">Clear Cart</button>
+    <button (click)="clear()" class="btn btn-danger">Clear Cart</button>
   </div>
 
   <div class="col-md-3 col-xs-12">
