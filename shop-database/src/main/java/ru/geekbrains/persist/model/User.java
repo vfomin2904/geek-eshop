@@ -3,6 +3,7 @@ package ru.geekbrains.persist.model;
 import ru.geekbrains.persist.model.Role;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,6 +22,11 @@ public class User {
 
     @Column
     private String email;
+
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL)
+    private Set<Order> orders;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
@@ -76,5 +82,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 }
