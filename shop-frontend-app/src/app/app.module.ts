@@ -13,7 +13,7 @@ import { ProductInfoPageComponent } from './pages/product-info-page/product-info
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from "@angular/common/http";
 import { OrderPageComponent } from './pages/order-page/order-page.component';
 import {UnauthorizedInterceptor} from "./helpers/unauthorized-interceptor";
 import { PaginationComponent } from './components/pagination/pagination.component';
@@ -37,7 +37,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientXsrfModule.withOptions({cookieName: 'XSRF-TOKEN'})
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true }

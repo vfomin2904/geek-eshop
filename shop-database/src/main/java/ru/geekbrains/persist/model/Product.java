@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @NamedEntityGraph(
         name = "product-with-category",
@@ -35,6 +36,9 @@ public class Product {
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Picture> pictures = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<LineItem> lineItems;
 
     public Product() {
     }
@@ -106,5 +110,13 @@ public class Product {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Set<LineItem> getLineItems() {
+        return lineItems;
+    }
+
+    public void setLineItems(Set<LineItem> lineItems) {
+        this.lineItems = lineItems;
     }
 }

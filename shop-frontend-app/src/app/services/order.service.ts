@@ -10,6 +10,6 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   public findOrdersByUser(userId:number) {
-    return this.http.get<Order[]>(`/api/v1/order/${userId}/user`);
+    return this.http.get<Order[]>(`/api/v1/order/${userId}`);
   }
 }

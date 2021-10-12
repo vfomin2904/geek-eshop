@@ -1,0 +1,55 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="aleks_ush (generated)" id="1634063859213-1">
+        <createTable tableName="lineitem">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="lineitemPK"/>
+            </column>
+            <column name="color" type="VARCHAR(255)"/>
+            <column name="material" type="VARCHAR(255)"/>
+            <column name="qty" type="INT"/>
+            <column name="product_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="aleks_ush (generated)" id="1634063859213-2">
+        <createTable tableName="orders">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ordersPK"/>
+            </column>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="aleks_ush (generated)" id="1634063859213-3">
+        <createTable tableName="products_lineitem">
+            <column name="Product_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="lineItems_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="aleks_ush (generated)" id="1634063859213-4">
+        <addColumn tableName="pictures">
+            <column name="storageId" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="aleks_ush (generated)" id="1634063859213-5">
+        <addUniqueConstraint columnNames="lineItems_id" constraintName="UK_ayvgoo6x3e781a7xhceagkbp8" tableName="products_lineitem"/>
+    </changeSet>
+    <changeSet author="aleks_ush (generated)" id="1634063859213-6">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="orders" constraintName="FK32ql8ubntj5uh44ph9659tiih" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="aleks_ush (generated)" id="1634063859213-7">
+        <addForeignKeyConstraint baseColumnNames="Product_id" baseTableName="products_lineitem" constraintName="FKapssoutgf9gewnvr1242ck6q1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="products" validate="true"/>
+    </changeSet>
+    <changeSet author="aleks_ush (generated)" id="1634063859213-8">
+        <addForeignKeyConstraint baseColumnNames="lineItems_id" baseTableName="products_lineitem" constraintName="FKfq5jacvr14vtl5hryb1e6h1n8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="lineitem" validate="true"/>
+    </changeSet>
+    <changeSet author="aleks_ush (generated)" id="1634063859213-9">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="lineitem" constraintName="FKim805rgl9hgxeuj3hcrr6bfx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="products" validate="true"/>
+    </changeSet>
+    <changeSet author="aleks_ush (generated)" id="1634063859213-10">
+        <dropColumn columnName="storage_id" tableName="pictures"/>
+    </changeSet>
+</databaseChangeLog>
